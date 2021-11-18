@@ -8,10 +8,10 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
-library(tidymodels)
 library(car)
 library(knitr)
 library(emmeans)
+library(tidymodels)
 library(readxl)
 ```
 
