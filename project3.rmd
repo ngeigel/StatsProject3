@@ -8,9 +8,12 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
-library(tidymodels)
 library(car)
 library(knitr)
 library(emmeans)
-library(readxl)
+```
+
+```{r}
+dataset <- readRDS("./data/group3_data.rds")
+dataset
 ```
