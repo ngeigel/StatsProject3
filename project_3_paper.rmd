@@ -98,7 +98,8 @@ tidy_dataset <- dataset %>%
   )
 ```
 
-## Hypothesis 1: The ability to keep track of current tasks, proxied by Flanker’s test of attention, can be explained by behavioral habits and a self-reported score when accounting for age and education level. These behavioral habits are ones that have been connected in literature to better brain performance: musical practice and fluency in multiple languages. The self-reported score asks the subject about their ability to keep track of current tasks in a distracting environment. 
+## Hypothesis 1:
+The ability to keep track of current tasks, proxied by Flanker’s test of attention, can be explained by behavioral habits and a self-reported score when accounting for age and education level. These behavioral habits are ones that have been connected in literature to better brain performance: musical practice and fluency in multiple languages. The self-reported score asks the subject about their ability to keep track of current tasks in a distracting environment. 
 
 * Variables from the dataset were renamed to improve clarity (Ex. tb_flanker_unadj_ss -> Flanker_test)
 
@@ -142,7 +143,7 @@ ggplot(data = hypo_one_dataset, aes(x = Age,
   labs(title = "Age vs. Flanker's Test") + 
   theme(plot.title = element_text(size = rel(1.2), hjust = 0.5))
 ```
-Figure (Age vs. Flanker's Test): There is a negative correlation between the participants' age and unadjusted scores from Flanker's test. The linear regression overlayed over the scatterplot suggests that the relationship between the two variables are not strong, as points are spread out along the y-axis.
+\emph{Figure (Age vs. Flanker's Test): There is a negative correlation between the participants' age and unadjusted scores from Flanker's test. The linear regression overlayed over the scatterplot suggests that the relationship between the two variables are not strong, as points are spread out along the y-axis.}
 
 ```{r}
 #Musical Practice vs. Flanker's Test
@@ -155,7 +156,7 @@ ggplot(data = hypo_one_dataset, aes(x = Musical_Practice, y = Flanker_test,
   labs(title = "Musical Practice vs. Flanker's Test") + 
   theme(plot.title = element_text(size = rel(1.2), hjust = 0.5))
 ```
-Figure (Musical vs. Flanker's Test): The boxplot suggests that there is not a significant relationship and variation between the participants' unadjusted scores from the Flanker's test and how many hours per week they conducted musical practice. This can be visually observed through each group's mean being similar in position to each on the y-axis and following no trend.
+\emph{Figure (Musical vs. Flanker's Test): The boxplot suggests that there is not a significant relationship and variation between the participants' unadjusted scores from the Flanker's test and how many hours per week they conducted musical practice. This can be visually observed through each group's mean being similar in position to each on the y-axis and following no trend.}
 
 ```{r}
 #Second Language vs. Flanker's Test
@@ -169,7 +170,7 @@ ggplot(data = hypo_one_dataset, aes(x = Second_Language, y = Flanker_test,
   labs(title = "Second Language(s) vs. Flanker's Test") + 
   theme(plot.title = element_text(size = rel(1.2), hjust = 0.5))
 ```
-Figure (Second Language Speaking vs. Flanker's Test): The boxplot shows that there is some impact of speaking a second language on participants' unadjusted Flanker's test scores. The boxplot that represents speaking a second language has a mean and overall quartile score values higher than the boxplot that represents not speaking a second language.
+\emph{Figure (Second Language Speaking vs. Flanker's Test): The boxplot shows that there is some impact of speaking a second language on participants' unadjusted Flanker's test scores. The boxplot that represents speaking a second language has a mean and overall quartile score values higher than the boxplot that represents not speaking a second language.}
 
 ```{r}
 #Education Level vs. Flanker's Test
@@ -182,7 +183,7 @@ ggplot(data = hypo_one_dataset, aes(x = Education_Level, y = Flanker_test,
   labs(title = "Highest Academic Degree vs. Flanker's Test") + 
   theme(plot.title = element_text(size = rel(1.2), hjust = 0.5))
 ```
-Figure (Highest Academic Degree vs. Flanker's Test): The boxplots can be visually observed to suggest that the degree of education do not have a significant effect on the unadjusted Flanker's test scores of participants. Specifically, the means of each boxplot are relatively similar and do not deviate much from each other.
+\emph{Figure (Highest Academic Degree vs. Flanker's Test): The boxplots can be visually observed to suggest that the degree of education do not have a significant effect on the unadjusted Flanker's test scores of participants. Specifically, the means of each boxplot are relatively similar and do not deviate much from each other.}
 
 ```{r}
 #Keep Track of Current Tasks vs. Flanker's Test
@@ -195,11 +196,11 @@ ggplot(data = hypo_one_dataset, aes(x = Track_Activity, y = Flanker_test,
   labs(title = "Keep Track of Current Tasks vs. Flanker's Test") + 
   theme(plot.title = element_text(size = rel(1.2), hjust = 0.5))
 ```
-Figure (Keep Track of Current Tasks vs. Flanker's Test): The boxplot can be visually observed to suggest that there is not a significant effect between the ability to keep track of current tasks and the unadjusted Flanker's test scores of participants. Specifically, the mean of each boxplot do not follow a trend with increasing degree in ability to keep track of current tasks. 
+\emph{Figure (Keep Track of Current Tasks vs. Flanker's Test): The boxplot can be visually observed to suggest that there is not a significant effect between the ability to keep track of current tasks and the unadjusted Flanker's test scores of participants. Specifically, the mean of each boxplot do not follow a trend with increasing degree in ability to keep track of current tasks.} 
 
-### Model Interpretation and Analysis:
+## Model Interpretation and Analysis:
 
-Model 1 (Full Model): Anova (type 2) test
+\textbf{Model 1 (Full Model): Anova (type 2) test}
 * The terms of: Track Activity, Second Language, Education Level, and Musical Practice are insignificant (p-value >> alpha = 0.05).
 * The terms of: Age is significant (p-value << alpha = 0.05).
 * A large degree of the model's variance is attributed to the age variable.
@@ -226,7 +227,7 @@ hypo1_model_2 <- lm(data = hypo_one_dataset, Flanker_test ~ Track_Activity + Sec
 kable(tidy(hypo1_model_2), digits = 3)
 kable(tidy(Anova(hypo1_model_2, type = 2, alpha = 0.05)), digits = 3)
 ```
-Model 3 (Age & Education Removed): Anova (type 2) test
+### Model 3 (Age & Education Removed): \emph{Anova (type 2) test}
 * The terms of: Track Activity, Second Language, and Musical Practice are insignificant (p-value >> alpha = 0.05).
 * No significant terms are contained in the model.
 * A large degree of the model's variance is attributed to the track activity variable.
@@ -239,7 +240,7 @@ hypo1_model_3 <- lm(data = hypo_one_dataset, Flanker_test ~ Age + Education_Leve
 #Analysis and Comparison
 kable(tidy(hypo1_model_3), digits = 3)
 kable(tidy(Anova(hypo1_model_3, type = 2, alpha = 0.05)), digits = 3)
-AIC(hypo1_model_1, hypo1_model_2, hypo1_model_3)
+kable(AIC(hypo1_model_1, hypo1_model_2, hypo1_model_3))
 ```
 
 
@@ -254,7 +255,7 @@ ggplot(hypo1_model_3_aug, aes(.fitted, .std.resid))+
   theme(plot.title = element_text(size = rel(1),
                                 hjust = 0.5))
 ```
-Residuals vs. Fitted Values Plot:
+\textbf{Residuals vs. Fitted Values Plot:}
 * Inspecting the plot, the residuals appear to be randomly distributed around the 0 line, indicating it is reasonable to assume a linear relationship. They form a rough band around the 0 line, indicating the error term variances are approximately equal. One residual in particular stands out somewhat in the upper right corner of the plot, potentially representing an outlier.
 
 
@@ -272,7 +273,7 @@ theme(plot.title = element_text(size = rel(1),
 
 hat_avg_model_3 = (2+1)/nrow(hypo1_model_3_aug) 
 ```
-QQ Plot:
+\textbf{QQ Plot:}
 * Observing the QQ plot shows that the model most closely follows a Chi-squared distribution with the left and right hand tails tilting upwards. However, there is variation as the points at the tails are scewing away from the linear line.
 
 ```{r}
@@ -291,7 +292,7 @@ hypo1_model_3_aug %>%
   theme(plot.title = element_text(size = rel(1), hjust = 0.5)) 
   
 ```
-Cooks Distance Plot: 
+\textbf{Cooks Distance Plot: }
 * Using the general rule of thumb for highlighting outliers of 3*(average Cooks Distance), we do not see any points that pass that threshold. Visually inspecting the graph, while numerous points have high leverage, there are not any points with notably inordinate influence (as represented by Cooks Distance) relative to the bulk of other data points. For these reasons, we did not identify and remove any outliers from this dataset.
 
 ### Discussion:
@@ -299,7 +300,8 @@ Cooks Distance Plot:
 
 ## Chris stuff
 
-## Hypothesis 2: The ability to recall from memory, proxied by the NIH Picture Sequence Memory Test, can be explained by the combined effect of relevant behavioral habits, fractional brain volume of a relevant section of the brain, and a self-reported score when accounting for age and education. These behavioral habits are ones that have been connected in literature to better brain performance: musical practice and fluency in multiple languages. The brain volume considered is the parahippocampal region, known in literature to be important for memory function. The self-reported score asks the subject about their ability to easily recall details in their day-to-day lives. 
+## Hypothesis 2: 
+The ability to recall from memory, proxied by the NIH Picture Sequence Memory Test, can be explained by the combined effect of relevant behavioral habits, fractional brain volume of a relevant section of the brain, and a self-reported score when accounting for age and education. These behavioral habits are ones that have been connected in literature to better brain performance: musical practice and fluency in multiple languages. The brain volume considered is the parahippocampal region, known in literature to be important for memory function. The self-reported score asks the subject about their ability to easily recall details in their day-to-day lives. 
 
 * Variables from the dataset have been renamed to improve clarity (e.g. tb_picseq_unadj_ss -> Pic_Seq_Mem_Test)
 
@@ -350,14 +352,14 @@ ggplot(data = hypo_two_dataset, aes(x = Age,
   theme_bw() +
   theme(plot.title = element_text(size = rel(1.2), hjust = 0.5))
 ```
-Figure (Age vs. Picture Sequence Memory Test): There is a negative correlation between the participants' age and scores from the Picture Sequence Memory test. This may indicate that memory associated with picture sequencing diminishes with age.
+\emph{Figure (Age vs. Picture Sequence Memory Test): There is a negative correlation between the participants' age and scores from the Picture Sequence Memory test. This may indicate that memory associated with picture sequencing diminishes with age.}
 
 ```{r}
 #Musical Practice vs. Picture Sequence Memory Test
-ggplot(data = hypo_two_dataset %>% filter(!is.na(Musical_Practice)), aes(x = Musical_Practice, y = Pic_Seq_Mem_Test,                                 color=factor(Musical_Practice,labels=c("Not Answered", "Less than 1 hour","1-2.5 hours","3-4.5 hours","5-6.5 hours")))) +
+ggplot(data = hypo_two_dataset %>% filter(!is.na(Musical_Practice)), aes(x = Musical_Practice, y = Pic_Seq_Mem_Test,                                 color=factor(Musical_Practice,labels=c("Blank","<1 hr","1-2.5 hr","3-4.5 hr","5-6.5 hr")))) +
   geom_boxplot(show.legend = FALSE) +
   stat_summary(fun.data = mean_se, color = "black") +
-  scale_x_discrete(labels=c("Not Answered","Less than 1 hour","1-2.5 hours","3-4.5 hours","5-6.5 hours")) +
+  scale_x_discrete(labels=c("Blank","<1 hr","1-2.5 hr","3-4.5 hr","5-6.5 hr")) +
   xlab("Musical Practice") +
   ylab("Picture Sequence Memory Test Score") +
   labs(color='Musical Practice') +
@@ -365,7 +367,7 @@ ggplot(data = hypo_two_dataset %>% filter(!is.na(Musical_Practice)), aes(x = Mus
   theme_bw() +
   theme(plot.title = element_text(size = rel(1.2), hjust = 0.5))
 ```
-Figure (Musical Practice vs. Picture Sequence Memory Test): The boxplot does not appear to suggest that there is a significant effect between musical practice and the Picture Sequence Memory test scores of participants. Specifically, the means of each boxplot does not appear to follow a trend with increasing score in the Picture Sequence Memory Test. It is also important to note that there are relatively few data points, as no answer is given for this particular question for many of the participants in the provided dataset, and very few participants answered for the higher categories of number of hours practiced.
+\emph{Figure (Musical Practice vs. Picture Sequence Memory Test): The boxplot does not appear to suggest that there is a significant effect between musical practice and the Picture Sequence Memory test scores of participants. Specifically, the means of each boxplot does not appear to follow a trend with increasing score in the Picture Sequence Memory Test. It is also important to note that there are relatively few data points, as no answer is given for this particular question for many of the participants in the provided dataset, and very few participants answered for the higher categories of number of hours practiced.} 
 
 ```{r}
 #Second Language vs. Picture Sequence Memory Test
@@ -420,11 +422,20 @@ ggplot(data = hypo_two_dataset %>% filter(!is.na(Remembering)), aes(x = Remember
   scale_x_discrete(labels=c("Not Answered","A little bit","Somewhat","Quite a bit","Very much")) +
   xlab("Ability to Remember Things as Easily as Usual") +
   ylab("Picture Sequence Memory Test Score") +
-  labs(title = "Ability to Remember Things as Easily as Usual vs. Picture Sequence Memory Test") +
-  theme_bw() +
-  theme(plot.title = element_text(size = rel(1.2), hjust = 0.5))
+  labs(title = "Ability to Remember Things as Easily as Usual\n vs. Picture Sequence Memory Test")+
+  theme_bw()+
+  theme(axis.line = element_line(size=0.7, colour="#0006FD"),
+        axis.ticks = element_line(size = 0.6, colour="#0006FD"),       
+        axis.title.x= element_text(colour="white",size=14),
+        axis.title.y= element_text(colour="#0029AE",size=14),
+        axis.text.x = element_text(colour="#3F918B",size=12),
+        axis.text.y = element_text(colour="#3F918B",size=12),
+        strip.text.x = element_text(colour = "white", face = "bold"),
+        strip.text.y = element_text(colour = "white", face = "bold"),
+        strip.background = element_rect(colour = "#0029AE", fill = "#0029AE"),
+        plot.title = element_text(hjust = 0.5))
 ```
-Figure (Ability to Remember vs. Picture Sequence Memory Test): The boxplot does not appear to suggest that there is a significant effect between the ability to remember things and the Picture Sequence Memory test scores of participants. Specifically, the means of each boxplot do not appear to follow a trend with increasing score in the Picture Sequence Memory Test. It is also important to note that there are relatively few data points, as no answer is given for this particular question for many of the participants in the provided dataset.
+\emph{Figure (Ability to Remember vs. Picture Sequence Memory Test): The boxplot does not appear to suggest that there is a significant effect between the ability to remember things and the Picture Sequence Memory test scores of participants. Specifically, the means of each boxplot do not appear to follow a trend with increasing score in the Picture Sequence Memory Test. It is also important to note that there are relatively few data points, as no answer is given for this particular question for many of the participants in the provided dataset.}
 
 ### Model Interpretation and Analysis:
 ```{r}
@@ -464,8 +475,17 @@ ggplot(hypo2_model_aug, aes(.fitted, .resid)) +
   geom_smooth(method=lm, formula = `y` ~ `x`) +
   labs(
 title = "Residuals vs. Fitted Values for Hypothesis Two")+
-theme(plot.title = element_text(size = rel(1),
-                                hjust = 0.5))
+  theme_bw()+
+  theme(axis.line = element_line(size=0.7, colour="#0006FD"),
+        axis.ticks = element_line(size = 0.6, colour="#0006FD"),       
+        axis.title.x= element_text(colour="#0029AE",size=14),
+        axis.title.y= element_text(colour="#0029AE",size=14),
+        axis.text.x = element_text(colour="#3F918B",size=12),
+        axis.text.y = element_text(colour="#3F918B",size=12),
+        strip.text.x = element_text(colour = "white", face = "bold"),
+        strip.text.y = element_text(colour = "white", face = "bold"),
+        strip.background = element_rect(colour = "#0029AE", fill = "#0029AE"),
+        plot.title = element_text(hjust = 0.5))
 ```
 Residuals vs. Fitted Values Plot:
 * Inspecting the plot, the residuals appear to be randomly distributed around the 0 line, indicating it is reasonable to assume a linear relationship. They form a rough band around the 0 line, indicating the error term variances are approximately equal. One residual in particular stands out somewhat in the upper right corner of the plot, potentially representing an outlier.
@@ -480,9 +500,18 @@ hypo2_model_aug %>%
 title = "QQ Plot showing Distribution of Standard
 Residual Values for Hypothesis Two") +
 ylab("Sample") +
-xlab("Theoretical") + 
-theme(plot.title = element_text(size = rel(1),
-                                hjust = 0.5))
+xlab("Theoretical") +
+  theme_bw()+
+  theme(axis.line = element_line(size=0.7, colour="#0006FD"),
+        axis.ticks = element_line(size = 0.6, colour="#0006FD"),       
+        axis.title.x= element_text(colour="#0029AE",size=14),
+        axis.title.y= element_text(colour="#0029AE",size=14),
+        axis.text.x = element_text(colour="#3F918B",size=12),
+        axis.text.y = element_text(colour="#3F918B",size=12),
+        strip.text.x = element_text(colour = "white", face = "bold"),
+        strip.text.y = element_text(colour = "white", face = "bold"),
+        strip.background = element_rect(colour = "#0029AE", fill = "#0029AE"),
+        plot.title = element_text(hjust = 0.5))
 ```
 QQ Plot:
 * Observing the QQ plot shows that the model most closely follows a chi squared distribution with both the left hand and right hand tails tilting up.
@@ -505,13 +534,23 @@ hypo2_model_aug %>%
   geom_vline(xintercept = 3 * hypo2_model_ave_hat,
              linetype = 2, color="red") +
   geom_text(aes(label=if_else(.cooksd>=(3 * mean(.cooksd)),
-# 3*(average Cooks Distance) is a general rule of thumb for highlighting potential outliers
-str_c("(", `Pic_Seq_Mem_Test`, ", ", `Parahippo_vol`,")"), "")),
-nudge_y = 0.2, size=3, nudge_x = 0.035, color = "red") +
+                              # 3*(average Cooks Distance) is a general rule of thumb for highlighting potential outliers
+                              str_c("(", `Pic_Seq_Mem_Test`, ", ", `Parahippo_vol`,")"), "")),
+            nudge_y = 0.2, size=3, nudge_x = 0.035, color = "red") +
   labs(
-title = "Cooks Distance for
-Hypothesis Two Model")+
-theme(plot.title = element_text(size = rel(1), hjust = 0.5))
+    title = "Cooks Distance for Hypothesis 2 Model")+
+  
+  theme_bw()+
+  theme(axis.line = element_line(size=0.7, colour="#0006FD"),
+        axis.ticks = element_line(size = 0.6, colour="#0006FD"),       
+        axis.title.x= element_text(colour="#0029AE",size=14),
+        axis.title.y= element_text(colour="#0029AE",size=14),
+        axis.text.x = element_text(colour="#3F918B",size=12),
+        axis.text.y = element_text(colour="#3F918B",size=12),
+        strip.text.x = element_text(colour = "white", face = "bold"),
+        strip.text.y = element_text(colour = "white", face = "bold"),
+        strip.background = element_rect(colour = "#0029AE", fill = "#0029AE"),
+        plot.title = element_text(hjust = 0.5))
 ```
 Cooks Distance Plot: 
 * Using the general rule of thumb for highlighting outliers of 3*(average Cooks Distance), we do not see any points that pass that threshold. Visually inspecting the graph, while numerous points have high leverage, there are not any points with notably inordinate influence (as represented by Cooks Distance) relative to the bulk of other data points. For these reasons, we did not identify and remove any outliers from this dataset.
@@ -831,7 +870,7 @@ Moca_unplanned_aug %>%
   geom_vline(xintercept = 2 * avg_hatMoca, linetype = 2, color="orange")+
   geom_vline(xintercept = 3 * avg_hatMoca, linetype = 2, color="red")+
   geom_hline(yintercept = c(-2, 2), linetype = 2)+
-  geom_text(aes(label=if_else(.std.resid >= 1 | .std.resid <= -1 | .hat >=3 * avg_hatMoca, paste0("(", Flanker_test, ", ", Moca_Score,")"),'')),  nudge_y = 0.2, size=3)+
+  geom_text(aes(label=if_else(.cooksd>=(3 * mean(.cooksd)) | .hat >=3 * avg_hatMoca, paste0("(", Flanker_test, ", ", Moca_Score,")"),'')),  nudge_y = 0.2, size=3)+
   theme_bw()+
     theme(axis.line = element_line(size=0.7, colour="#0006FD"),
         axis.ticks = element_line(size = 0.6, colour="#0006FD"),       
