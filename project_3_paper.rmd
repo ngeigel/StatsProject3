@@ -792,7 +792,17 @@ Moca_unplanned_aug %>%
   geom_vline(xintercept = 3 * avg_hatMoca, linetype = 2, color="red")+
   geom_hline(yintercept = c(-2, 2), linetype = 2)+
   geom_text(aes(label=paste0("(", Flanker_test, ", ", Moca_Score,")")),  nudge_y = 0.2, size=4)+
-  theme_bw()
+  theme_bw()+
+    theme(axis.line = element_line(size=0.7, colour="#0006FD"),
+        axis.ticks = element_line(size = 0.6, colour="#0006FD"),       
+        axis.title.x= element_text(colour="#0029AE",size=14),
+        axis.title.y= element_text(colour="#0029AE",size=14),
+        axis.text.x = element_text(colour="#3F918B",size=12),
+        axis.text.y = element_text(colour="#3F918B",size=12),
+        strip.text.x = element_text(colour = "white", face = "bold"),
+        strip.text.y = element_text(colour = "white", face = "bold"),
+        strip.background = element_rect(colour = "#0029AE", fill = "#0029AE"),
+        plot.title = element_text(hjust = 0.5))
 ```
 
 ## Sasank stuff
