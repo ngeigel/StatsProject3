@@ -791,7 +791,7 @@ Moca_unplanned_aug %>%
   geom_vline(xintercept = 2 * avg_hatMoca, linetype = 2, color="orange")+
   geom_vline(xintercept = 3 * avg_hatMoca, linetype = 2, color="red")+
   geom_hline(yintercept = c(-2, 2), linetype = 2)+
-  geom_text(aes(label=paste0("(", Flanker_test, ", ", Moca_Score,")")),  nudge_y = 0.2, size=4)+
+  geom_text(aes(label=if_else(.std.resid >= 1 | .std.resid <= -1 | .hat >=3 * avg_hatMoca, paste0("(", Flanker_test, ", ", Moca_Score,")"),'')),  nudge_y = 0.2, size=3)+
   theme_bw()+
     theme(axis.line = element_line(size=0.7, colour="#0006FD"),
         axis.ticks = element_line(size = 0.6, colour="#0006FD"),       
